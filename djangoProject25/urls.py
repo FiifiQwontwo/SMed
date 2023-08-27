@@ -38,6 +38,7 @@ urlpatterns = [
     path('groups/', include('groups.urls')),
     path('comment/', include('comment.urls')),
     path('likes/', include('like.urls'), name='Like'),
+    path('follow/', include('followers.urls'), name='followers'),
     path('swagger/', schema_view.with_ui('swagger'), name='schema-swagger-ui'),
     path('redocs/', schema_view.with_ui('redoc'), name='schema-redoc'),
 ]

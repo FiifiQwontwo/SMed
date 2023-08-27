@@ -8,6 +8,7 @@ from .manager import MyAccountManager
 class Account(AbstractBaseUser):
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=50)
+    username = models.CharField(unique=True, max_length=100)
     email = models.EmailField(max_length=50, unique=True)
     phone = models.CharField(max_length=50, unique=True)
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
@@ -18,7 +19,7 @@ class Account(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['last_name', 'first_name', 'phone']
+    REQUIRED_FIELDS = ['last_name', 'first_name', 'phone', 'username']
 
     objects = MyAccountManager()
 
