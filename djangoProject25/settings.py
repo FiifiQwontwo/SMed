@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'comment.apps.CommentConfig',
     'like.apps.LikeConfig',
     'post.apps.PostConfig',
+    'repost.apps.RepostConfig',
     'rest_framework',
     'drf_yasg',
 ]
