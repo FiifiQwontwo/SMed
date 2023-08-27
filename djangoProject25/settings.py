@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'groups.apps.GroupsConfig',
     'accounts.apps.AccountsConfig',
     'comment.apps.CommentConfig',
+    'like.apps.LikeConfig',
     'post.apps.PostConfig',
     'rest_framework',
     'drf_yasg',
