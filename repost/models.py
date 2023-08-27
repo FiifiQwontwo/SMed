@@ -11,4 +11,4 @@ class Repost(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Like by {self.user} on {self.post} at {self.created_at}"
+        return f"Reposted by {self.user} on {self.post} at {self.created_at}"
