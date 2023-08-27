@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 from .models import Group
-from .serializer import CreateGroup
+from .serializer import CreateGroup, GroupSerializer
 
 
 class CreateGroupView(APIView):
@@ -36,3 +36,19 @@ class CreateGroupView(APIView):
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class ManageGroupsView(APIView):
+    def get(self, request, format=None):
+        user = request.user
+        groups = Group.objects.filter(membership__user=user)
+        serializer = GroupSerializer(groups, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = GroupSerializer(data=request.data)
+        if serializer.is_valid():
+            group = serializer.save()
+            Membership.objects.create(user=request.user, group=group)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

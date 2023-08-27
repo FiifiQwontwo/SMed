@@ -20,3 +20,9 @@ class CreateGroup(serializers.ModelSerializer):
         )
         new_group.save()
         return new_group
+
+
+class GroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Group
+        fields = '__all__'
