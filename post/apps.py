@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class SmediaConfig(AppConfig):
+class PostConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'SMedia'
+    name = 'post'

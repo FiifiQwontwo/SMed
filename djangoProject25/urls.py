@@ -18,8 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from django.conf import settings
-from django.conf.urls.static import static
+
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -37,7 +36,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('post/', include('post.urls')),
     path('groups/', include('groups.urls')),
-    path('membership/', include('membership.urls')),
+    # path('membership/', include('membership.urls')),
     path('swagger/', schema_view.with_ui('swagger'), name='schema-swagger-ui'),
     path('redocs/', schema_view.with_ui('redoc'), name='schema-redoc'),
 ]
