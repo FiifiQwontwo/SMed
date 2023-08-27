@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'groups.apps.GroupsConfig',
     'accounts.apps.AccountsConfig',
+    'comment.apps.CommentConfig',
     'post.apps.PostConfig',
     'rest_framework',
     'drf_yasg',
@@ -143,3 +144,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'accounts.Account'

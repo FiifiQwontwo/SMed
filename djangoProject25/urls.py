@@ -36,7 +36,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('post/', include('post.urls')),
     path('groups/', include('groups.urls')),
-    # path('membership/', include('membership.urls')),
+    path('comment/', include('comment.urls')),
     path('swagger/', schema_view.with_ui('swagger'), name='schema-swagger-ui'),
     path('redocs/', schema_view.with_ui('redoc'), name='schema-redoc'),
 ]
