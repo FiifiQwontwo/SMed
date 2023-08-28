@@ -14,7 +14,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Account
-        fields = ('id', 'first_name', 'last_name', 'email', 'phone', 'date_joined', 'last_login',
+        fields = ('id', 'first_name', 'last_name', 'username', 'email', 'phone', 'date_joined', 'last_login',
                   'is_admin', 'is_active', 'is_superuser', 'is_staff', 'user_profile')
 
     def create(self, validated_data):
