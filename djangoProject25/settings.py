@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'like.apps.LikeConfig',
     'post.apps.PostConfig',
     'followers.apps.FollowersConfig',
+    'membership.apps.MembershipConfig',
     'repost.apps.RepostConfig',
     'rest_framework',
     'drf_yasg',

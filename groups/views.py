@@ -3,8 +3,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
+from membership.models import Membership
 from .models import Group
 from .serializer import CreateGroup, GroupSerializer
+from django.shortcuts import get_object_or_404
 
 
 class CreateGroupView(APIView):
@@ -52,3 +54,17 @@ class ManageGroupsView(APIView):
             Membership.objects.create(user=request.user, group=group)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LeaveGroupView(APIView):
+    def post(self, request, membership_id, ):
+        membership = get_object_or_404(Membership, pk=membership_id)
+
+        if membership.user != request.user:
+            return Response({"message": "You are not authorized to leave this group."},
+                            status=status.HTTP_403_FORBIDDEN)
+
+        membership.delete()
+
+        return Response({"message": "You have successfully left the group."},
+                        status=status.HTTP_200_OK)
